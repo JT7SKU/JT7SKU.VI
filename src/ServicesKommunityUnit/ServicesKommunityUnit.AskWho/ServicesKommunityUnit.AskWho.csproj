@@ -13,10 +13,6 @@
 		<PackageReference Include="Microsoft.Agents.Storage.CosmosDb" Version="1.2.41" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JaniC3N7.Common\JaniC3N7.Yleinen.csproj" />
-    <ProjectReference Include="..\ServicesKeeperUnit.Lib.Core\ServicesKeeperUnit.Lib.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
