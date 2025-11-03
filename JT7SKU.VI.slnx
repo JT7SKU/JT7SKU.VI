@@ -1,6 +1,0 @@
-<Solution>
-  <Project Path="JT7SKU.VI.AppHost/JT7SKU.VI.AppHost.csproj" />
-  <Project Path="JT7SKU.VI.MCP/JT7SKU.VI.MCP.csproj" />
-  <Project Path="JT7SKU.VI.ServiceDefaults/JT7SKU.VI.ServiceDefaults.csproj" />
-  <Project Path="JTSKU.VI.Extensions/JTSKU.VI.Extensions.csproj" />
-</Solution>

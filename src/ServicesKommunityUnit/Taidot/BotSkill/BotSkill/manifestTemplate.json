@@ -1,0 +1,26 @@
+{
+  "id": "BotSkill",
+  "name": "BotSkill",
+  "description": "",
+  "iconUrl": "",
+  "authenticationConnections": [],
+  "actions": [
+    {
+      "id": "BotSkill_Sample",
+      "definition": {
+        "description": "Sample Skill action with no slots",
+        "slots": [],
+        "triggers": {
+          "utteranceSources": [
+            {
+              "locale": "en",
+              "source": [
+                "BotSkill#Sample"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

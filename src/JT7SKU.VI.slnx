@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Aspire/">
+    <Project Path="VI/JT7SKU.VI.AppHost/JT7SKU.VI.AppHost.csproj" />
+    <Project Path="VI/JT7SKU.VI.ServiceDefaults/JT7SKU.VI.ServiceDefaults.csproj" />
+    <Project Path="VI/JTSKU.VI.Extensions/JTSKU.VI.Extensions.csproj" />
+  </Folder>
+  <Folder Name="/MCP/">
+    <Project Path="VI/JT7SKU.VI.MCP/JT7SKU.VI.MCP.csproj" />
+  </Folder>
+  <Folder Name="/ServicesKeeperUnit/">
+    <Project Path="ServicesKeeperUnit/ServicesKeeperUnit.Lib.Core/ServicesKeeperUnit.Lib.Core.csproj" />
+    <Project Path="ServicesKeeperUnit/ServicesKeeperUnit.Twitch.Lib/ServicesKeeperUnit.Twitch.Lib.csproj" />
+    <Project Path="ServicesKeeperUnit/ServicesKeeperUnit.TwitchAdapter/ServicesKeeperUnit.Twitch.Adapter.csproj" />
+  </Folder>
+  <Folder Name="/ServicesKommunityUnit/">
+    <Project Path="ServicesKommunityUnit/ServicesKommunityUnit.AskWho/ServicesKommunityUnit.AskWho.csproj" />
+  </Folder>
+  <Folder Name="/ServicesKommunityUnit/Taidot/">
+    <Project Path="ServicesKommunityUnit/Taidot/BotSkill/BotSkill.Tests/BotSkill.Tests.csproj" />
+    <Project Path="ServicesKommunityUnit/Taidot/BotSkill/BotSkill/TwitchSkill.csproj" />
+  </Folder>
+  <Folder Name="/StreamKomponenttiUnit/">
+    <Project Path="StreamKomponenttiUnit/StreamKomponentUnit.Raffle/StreamKomponentUnit.Raffle.csproj" />
+    <Project Path="StreamKomponenttiUnit/WebChat/StreamKomponentUnit.WebChat.csproj" />
+  </Folder>
+</Solution>
