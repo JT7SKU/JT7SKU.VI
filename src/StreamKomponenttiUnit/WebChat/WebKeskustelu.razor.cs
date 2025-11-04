@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
+using StreamKomponenttiUnit.Yhteinen.Mallit;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using JaniC3N7.Common.Models;
+
 using System.Threading.Tasks;
 
 namespace StreamKomponentUnit.WebChat

@@ -20,6 +20,7 @@
     <Project Path="ServicesKommunityUnit/Taidot/BotSkill/BotSkill/TwitchSkill.csproj" />
   </Folder>
   <Folder Name="/StreamKomponenttiUnit/">
+    <Project Path="StreamKomponenttiUnit.Yhteinen/StreamKomponenttiUnit.Yhteinen.csproj" Id="5bae38bd-34a4-49d3-8454-8adf8fc7a451" />
     <Project Path="StreamKomponenttiUnit/StreamKomponentUnit.Raffle/StreamKomponentUnit.Raffle.csproj" />
     <Project Path="StreamKomponenttiUnit/WebChat/StreamKomponentUnit.WebChat.csproj" />
   </Folder>

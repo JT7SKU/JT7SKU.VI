@@ -21,6 +21,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\StreamKomponenttiUnit.Yhteinen\StreamKomponenttiUnit.Yhteinen.csproj" />
+  </ItemGroup>
+
  
 
 </Project>
