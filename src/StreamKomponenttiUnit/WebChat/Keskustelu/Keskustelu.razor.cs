@@ -1,0 +1,105 @@
+using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.AI;
+using System.ComponentModel;
+
+namespace StreamKomponentUnit.WebChat.Keskustelu
+{
+    public partial class Keskustelu :ComponentBase
+    {
+        private const string SystemPrompt = @"
+        You are an assistant who answers questions about information you retrieve.
+        Do not answer questions about anything else.
+        Use only simple markdown to format your responses.
+
+        Use the search tool to find relevant information. When you do this, end your
+        reply with citations in the special XML format:
+
+        <citation filename='string' page_number='number'>exact quote here</citation>
+
+        Always include the citation in your response if there are results.
+
+        The quote must be max 5 words, taken word-for-word from the search result, and is the basis for why the citation is relevant.
+        Don't refer to the presence of citations; just emit these tags right at the end, with no surrounding text.
+        ";
+
+        private int statefulMessageCount;
+        private readonly ChatOptions chatOptions = new();
+        private readonly List<ChatMessage> messages = new();
+        private CancellationTokenSource? currentResponseCancellation;
+        private ChatMessage? currentResponseMessage;
+        private KeskusteluInput? chatInput;
+        private KeskusteluSuosittelu? chatSuggestions;
+
+        protected override void OnInitialized()
+        {
+            statefulMessageCount = 0;
+            messages.Add(new(ChatRole.System, SystemPrompt));
+            chatOptions.Tools = [AIFunctionFactory.Create(SearchAsync)];
+        }
+
+        private async Task AddUserMessageAsync(ChatMessage userMessage)
+        {
+            CancelAnyCurrentResponse();
+
+            // Add the user message to the conversation
+            messages.Add(userMessage);
+            chatSuggestions?.Clear();
+            await chatInput!.FocusAsync();
+
+            // Stream and display a new response from the IChatClient
+            var responseText = new TextContent("");
+            currentResponseMessage = new ChatMessage(ChatRole.Assistant, [responseText]);
+            currentResponseCancellation = new();
+            await foreach (var update in ChatClient.GetStreamingResponseAsync(messages.Skip(statefulMessageCount), chatOptions, currentResponseCancellation.Token))
+            {
+                messages.AddMessages(update, filter: c => c is not TextContent);
+                responseText.Text += update.Text;
+                chatOptions.ConversationId = update.ConversationId;
+                ChatMessageItem.NotifyChanged(currentResponseMessage);
+            }
+
+            // Store the final response in the conversation, and begin getting suggestions
+            messages.Add(currentResponseMessage!);
+            statefulMessageCount = chatOptions.ConversationId is not null ? messages.Count : 0;
+            currentResponseMessage = null;
+            chatSuggestions?.Update(messages);
+        }
+
+        private void CancelAnyCurrentResponse()
+        {
+            // If a response was cancelled while streaming, include it in the conversation so it's not lost
+            if (currentResponseMessage is not null)
+            {
+                messages.Add(currentResponseMessage);
+            }
+
+            currentResponseCancellation?.Cancel();
+            currentResponseMessage = null;
+        }
+
+        private async Task ResetConversationAsync()
+        {
+            CancelAnyCurrentResponse();
+            messages.Clear();
+            messages.Add(new(ChatRole.System, SystemPrompt));
+            chatOptions.ConversationId = null;
+            statefulMessageCount = 0;
+            chatSuggestions?.Clear();
+            await chatInput!.FocusAsync();
+        }
+
+        [Description("Searches for information using a phrase or keyword")]
+        private async Task<IEnumerable<string>> SearchAsync(
+            [Description("The phrase to search for.")] string searchPhrase,
+            [Description("If possible, specify the filename to search that file only. If not provided or empty, the search includes all files.")] string? filenameFilter = null)
+        {
+            await InvokeAsync(StateHasChanged);
+            var results = await Search.SearchAsync(searchPhrase, filenameFilter, maxResults: 5);
+            return results.Select(result =>
+                $"<result filename=\"{result.DocumentId}\" page_number=\"{result.PageNumber}\">{result.Text}</result>");
+        }
+
+        public void Dispose()
+            => currentResponseCancellation?.Cancel();
+    }
+}

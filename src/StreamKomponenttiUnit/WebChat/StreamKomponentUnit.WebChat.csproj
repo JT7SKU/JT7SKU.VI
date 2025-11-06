@@ -10,15 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- .js/.css files will be referenced via <script>/<link> tags; other content files will just be included in the app's 'dist' directory without any tags referencing them -->
-    <EmbeddedResource Include="content\**\*.js" LogicalName="blazor:js:%(RecursiveDir)%(Filename)%(Extension)" />
-    <EmbeddedResource Include="content\**\*.css" LogicalName="blazor:css:%(RecursiveDir)%(Filename)%(Extension)" />
-    <EmbeddedResource Include="content\**" Exclude="**\*.js;**\*.css" LogicalName="blazor:file:%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="wwwroot\background.png" />
+    <None Include="wwwroot\exampleJsInterop.js" />
+    <None Include="wwwroot\styles.css" />
   </ItemGroup>
 
+  
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Browser" Version="3.0.0-preview7.19365.7" />
+    
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.10" />
+    
+    <PackageReference Include="Microsoft.Extensions.AI" Version="9.10.2" />
   </ItemGroup>
 
   <ItemGroup>

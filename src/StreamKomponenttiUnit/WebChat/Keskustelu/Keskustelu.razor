@@ -1,0 +1,17 @@
+﻿@page "/"
+<PageTitle>Chat</PageTitle>
+
+<KeskusteluOtsikko OnNewChat="@ResetConversationAsync" />
+
+<KeskusteluViestiLista Messages="@messages" InProgressMessage="@currentResponseMessage">
+    <NoMessagesContent>
+        <div>To get started, try asking about these example documents. You can replace these with your own data and replace this message.</div>
+        <KeskusteluSitaatti File="Example_Emergency_Survival_Kit.pdf"/>
+        <KeskusteluSitaatti File="Example_GPS_Watch.pdf"/>
+    </NoMessagesContent>
+</KeskusteluViestiLista>
+
+<div class="chat-container">
+    <KeskusteluSuosittelu OnSelected="@AddUserMessageAsync" @ref="@chatSuggestions" />
+    <KeskusteluInput OnSend="@AddUserMessageAsync" @ref="@chatInput" />
+</div>
