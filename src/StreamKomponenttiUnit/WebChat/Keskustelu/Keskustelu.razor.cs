@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.AI;
+using StreamKomponenttiUnit.Yhteinen.Services;
 using System.ComponentModel;
 
 namespace StreamKomponentUnit.WebChat.Keskustelu
@@ -29,12 +30,13 @@ namespace StreamKomponentUnit.WebChat.Keskustelu
         private ChatMessage? currentResponseMessage;
         private KeskusteluInput? chatInput;
         private KeskusteluSuosittelu? chatSuggestions;
-
+        private IChatClient keskusteluasiakas;
+        private SemanticSearch Haku;
         protected override void OnInitialized()
         {
             statefulMessageCount = 0;
             messages.Add(new(ChatRole.System, SystemPrompt));
-            chatOptions.Tools = [AIFunctionFactory.Create(SearchAsync)];
+            chatOptions.Tools = [AIFunctionFactory.Create(HaeAsync)];
         }
 
         private async Task AddUserMessageAsync(ChatMessage userMessage)
@@ -50,12 +52,13 @@ namespace StreamKomponentUnit.WebChat.Keskustelu
             var responseText = new TextContent("");
             currentResponseMessage = new ChatMessage(ChatRole.Assistant, [responseText]);
             currentResponseCancellation = new();
-            await foreach (var update in ChatClient.GetStreamingResponseAsync(messages.Skip(statefulMessageCount), chatOptions, currentResponseCancellation.Token))
+            await foreach (var update in keskusteluasiakas.GetStreamingResponseAsync(messages.Skip(statefulMessageCount), chatOptions, currentResponseCancellation.Token))
             {
                 messages.AddMessages(update, filter: c => c is not TextContent);
                 responseText.Text += update.Text;
                 chatOptions.ConversationId = update.ConversationId;
-                ChatMessageItem.NotifyChanged(currentResponseMessage);
+                KeskusteluViestiItemi.NotifyChanged(currentResponseMessage);
+                
             }
 
             // Store the final response in the conversation, and begin getting suggestions
@@ -89,12 +92,12 @@ namespace StreamKomponentUnit.WebChat.Keskustelu
         }
 
         [Description("Searches for information using a phrase or keyword")]
-        private async Task<IEnumerable<string>> SearchAsync(
+        private async Task<IEnumerable<string>> HaeAsync(
             [Description("The phrase to search for.")] string searchPhrase,
             [Description("If possible, specify the filename to search that file only. If not provided or empty, the search includes all files.")] string? filenameFilter = null)
         {
             await InvokeAsync(StateHasChanged);
-            var results = await Search.SearchAsync(searchPhrase, filenameFilter, maxResults: 5);
+            var results = await Haku.SearchAsync(searchPhrase, filenameFilter, maxResults: 5);
             return results.Select(result =>
                 $"<result filename=\"{result.DocumentId}\" page_number=\"{result.PageNumber}\">{result.Text}</result>");
         }

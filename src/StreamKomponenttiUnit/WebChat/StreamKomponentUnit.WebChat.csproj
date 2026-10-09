@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IsPackable>true</IsPackable>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -21,12 +21,15 @@
 	</ItemGroup>
   <ItemGroup>
     
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.12" />
     
-    <PackageReference Include="Microsoft.Extensions.AI" Version="9.10.2" />
+    <PackageReference Include="Microsoft.Extensions.AI" Version="10.10.0" />
+    <PackageReference Include="Microsoft.Agents.AI" Version="1.24.0" />
+    <PackageReference Include="Microsoft.SemanticKernel.Core" Version="1.81.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ServicesKeeperUnit\ServicesKeeperUnit.TwitchAdapter\ServicesKeeperUnit.Twitch.Adapter.csproj" />
     <ProjectReference Include="..\..\StreamKomponenttiUnit.Yhteinen\StreamKomponenttiUnit.Yhteinen.csproj" />
   </ItemGroup>
 

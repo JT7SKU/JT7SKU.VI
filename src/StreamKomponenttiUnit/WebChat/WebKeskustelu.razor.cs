@@ -11,7 +11,7 @@ namespace StreamKomponentUnit.WebChat
    public class WebChatCode : ComponentBase
     {
 
-        public List<MessageModel> Messages { get; set; }
+        public List<ViestiMalli> Messages { get; set; }
         
         protected override Task OnInitializedAsync()
         {
