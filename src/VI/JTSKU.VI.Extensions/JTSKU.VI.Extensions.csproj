@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\StreamKomponenttiUnit.Yhteinen\StreamKomponenttiUnit.Yhteinen.csproj" />
+  </ItemGroup>
+
 </Project>

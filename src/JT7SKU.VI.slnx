@@ -14,6 +14,7 @@
   </Folder>
   <Folder Name="/ServicesKommunityUnit/">
     <Project Path="ServicesKommunityUnit/ServicesKommunityUnit.AskWho/ServicesKommunityUnit.AskWho.csproj" />
+    <Project Path="StateKoneUtility.Kirjasto/StateKoneUtility.Kirjasto.csproj" Id="059a792e-be55-4170-9d41-ec837601b297" />
   </Folder>
   <Folder Name="/ServicesKommunityUnit/Taidot/">
     <Project Path="ServicesKommunityUnit/Taidot/BotSkill/BotSkill.Tests/BotSkill.Tests.csproj" />
