@@ -82,6 +82,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\Janisku7\JaniC3N7\src\JaniC3N7.Common\JaniC3N7.Yleinen.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="*.bot">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

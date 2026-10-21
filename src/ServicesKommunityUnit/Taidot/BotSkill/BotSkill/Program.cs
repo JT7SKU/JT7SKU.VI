@@ -1,8 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using BotSkill.Services;
+using JaniC3N7.Yleinen.Extensions;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BotSkill
 {
@@ -10,12 +14,25 @@ namespace BotSkill
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            WebbiRakentaja(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>() // Note: Application Insights is added in Startup.  Disabling is also handled there.
-                .Build();
+        public static WebApplication WebbiRakentaja(string[] args)
+        {
+            var rakentaja = WebApplication.CreateBuilder(args);
+            rakentaja.Services.AddMvc();
+            rakentaja.Services.AddSingleton<BotServices>();
+            rakentaja.Services.AddControllers();
+            rakentaja.Services.AddAgentAspNetAuthentication(rakentaja.Configuration);
+
+            var app = rakentaja.Build();
+            //app.MapDefaultEndpoints();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            return app;
+        }
+           
     }
 }

@@ -6,26 +6,16 @@ using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.ApplicationInsights;
-using Microsoft.Bot.Builder.Azure;
-using Microsoft.Bot.Builder.BotFramework;
-using Microsoft.Bot.Builder.Integration.ApplicationInsights.Core;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Builder.Skills;
-using Microsoft.Bot.Builder.Solutions;
-using Microsoft.Bot.Builder.Solutions.Responses;
-using Microsoft.Bot.Builder.Solutions.TaskExtensions;
-using Microsoft.Bot.Connector.Authentication;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using BotSkill.Adapters;
 using BotSkill.Bots;
 using BotSkill.Dialogs;
-using BotSkill.Responses.Main;
-using BotSkill.Responses.Sample;
-using BotSkill.Responses.Shared;
+using TwitchSkill.Responses.Main;
+using TwitchSkill.Responses.Sample;
+using TwitchSkill.Responses.Shared;
 using BotSkill.Services;
 
 namespace BotSkill
@@ -52,7 +42,7 @@ namespace BotSkill
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
 
             var provider = services.BuildServiceProvider();
 
