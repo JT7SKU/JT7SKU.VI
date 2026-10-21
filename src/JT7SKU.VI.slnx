@@ -13,7 +13,9 @@
     <Project Path="ServicesKeeperUnit/ServicesKeeperUnit.TwitchAdapter/ServicesKeeperUnit.Twitch.Adapter.csproj" />
   </Folder>
   <Folder Name="/ServicesKommunityUnit/">
+    <Project Path="ServicesKommunityUnit/ServicesKommunityUnit.AppHost/ServicesKommunityUnit.AppHost.csproj" Id="6c209268-f6eb-45ef-b246-6a9eda822083" />
     <Project Path="ServicesKommunityUnit/ServicesKommunityUnit.AskWho/ServicesKommunityUnit.AskWho.csproj" />
+    <Project Path="ServicesKommunityUnit/ServicesKommunityUnit.ServiceDefaults/ServicesKommunityUnit.ServiceDefaults.csproj" Id="ba96529e-b62b-4261-a365-5fbb02544c99" />
     <Project Path="StateKoneUtility.Kirjasto/StateKoneUtility.Kirjasto.csproj" Id="059a792e-be55-4170-9d41-ec837601b297" />
   </Folder>
   <Folder Name="/ServicesKommunityUnit/Taidot/">
@@ -25,4 +27,5 @@
     <Project Path="StreamKomponenttiUnit/StreamKomponentUnit.Raffle/StreamKomponentUnit.Raffle.csproj" />
     <Project Path="StreamKomponenttiUnit/WebChat/StreamKomponentUnit.WebChat.csproj" />
   </Folder>
+  <Project Path="JT7SKU.VI.Kirjasto.Yhteinen/JT7SKU.VI.Kirjasto.Yhteinen.csproj" Id="f3b5e133-7fa6-45e1-a366-894c1be77af8" />
 </Solution>
