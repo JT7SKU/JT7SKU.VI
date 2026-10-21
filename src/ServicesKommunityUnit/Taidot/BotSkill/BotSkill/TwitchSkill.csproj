@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <NoWarn>NU1701</NoWarn>
   </PropertyGroup>
 
@@ -49,21 +49,21 @@
 
   <ItemGroup>
     <!--<PackageReference Include="AdaptiveCards" Version="1.1.2" />-->
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.23.0" />
+    <PackageReference Include="Azure.AI.ContentSafety" Version="1.0.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="3.2.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.DependencyCollector" Version="2.23.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Azure.CognitiveServices.ContentModerator" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.13" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Language" Version="1.0.1-preview" />
-		<PackageReference Include="Microsoft.Agents.Builder" Version="1.2.41" />
+		<PackageReference Include="Microsoft.Agents.Builder" Version="1.9.205" />
     <!--<PackageReference Include="Microsoft.Bot.Builder" Version="4.4.5" />-->
 
-		<PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.2.41" />
-		<PackageReference Include="Microsoft.Agents.Builder.Dialogs" Version="1.2.41" />
-		<PackageReference Include="Microsoft.Agents.Core" Version="1.2.41" />
-		<PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.2.41" />
-		<PackageReference Include="Microsoft.Agents.Storage.CosmosDb" Version="1.2.41" />
-		<PackageReference Include="System.Text.Json" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Agents.Authentication.Msal" Version="1.9.205" />
+		<PackageReference Include="Microsoft.Agents.Builder.Dialogs" Version="1.9.205" />
+		<PackageReference Include="Microsoft.Agents.Core" Version="1.9.205" />
+		<PackageReference Include="Microsoft.Agents.Hosting.AspNetCore" Version="1.9.205" />
+		<PackageReference Include="Microsoft.Agents.Storage.CosmosDb" Version="1.9.205" />
+		<PackageReference Include="System.Text.Json" Version="10.0.13" />
     <!--PackageReference Include="Microsoft.Bot.Builder.ApplicationInsights" Version="4.4.5" />
     <PackageReference Include="Microsoft.Bot.Builder.Azure" Version="4.4.5" />
     <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.4.5" />
@@ -75,10 +75,10 @@
     <PackageReference Include="Microsoft.Bot.Configuration" Version="4.4.5" />
     <PackageReference Include="Microsoft.Bot.Connector" Version="4.4.5" />
     <PackageReference Include="Microsoft.Bot.Schema" Version="4.4.5" />-->
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Graph" Version="5.95.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.13" />
+    <PackageReference Include="Microsoft.Graph" Version="6.8.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
   </ItemGroup>
 
   <ItemGroup>
